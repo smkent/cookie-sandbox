@@ -16,6 +16,7 @@ on:
 
 jobs:
   test:
+    name:
     uses: ./.github/workflows/ci.yml
 
   publish:
