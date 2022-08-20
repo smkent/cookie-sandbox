@@ -49,6 +49,18 @@ jobs:
         with:
           fail_ci_if_error: true
 
+      - name: Run if bool true
+        run: echo bool true
+        if: ${{ env.ENABLE_COVERAGE == true }}
+
+      - name: Run if true
+        run: echo true
+        if: ${{ env.ENABLE_COVERAGE == "true" }}
+
+      - name: Run if not true
+        run: echo false
+        if: ${{ env.ENABLE_COVERAGE != "true" }}
+
 concurrency:
   group: workflow-ci-${{ github.ref }}-1
   cancel-in-progress: true
