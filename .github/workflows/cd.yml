@@ -10,8 +10,10 @@ env:
 
 on:
   workflow_run:
-    workflows: ["CI"]
-    tags: "*"
+    workflows:
+      - CI
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
