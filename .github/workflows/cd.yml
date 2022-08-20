@@ -1,5 +1,5 @@
 ---
-name: CD
+name: Release
 
 env:
   ENABLE_PYPI_PUBLISH: false
