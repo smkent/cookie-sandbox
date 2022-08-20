@@ -9,11 +9,9 @@ env:
   RELEASE_POETRY_VERSION: "1.1.14"
 
 on:
-  release:
-    types: [created]
   push:
-    branches:
-      - main
+    tags:
+      - '*'
   workflow_dispatch:
 
 jobs:
