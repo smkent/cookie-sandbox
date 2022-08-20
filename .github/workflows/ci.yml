@@ -56,7 +56,7 @@ jobs:
 
       - name: Call CD workflow
         uses: ./.github/workflows/cd.yml
-        secrets: inherit
+        # secrets: inherit
 
 concurrency:
   group: workflow-ci-${{ github.ref }}-1
