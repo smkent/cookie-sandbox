@@ -15,8 +15,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    name:
+  Test:
     uses: ./.github/workflows/ci.yml
 
   publish:
