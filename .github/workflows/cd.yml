@@ -9,11 +9,7 @@ env:
   RELEASE_POETRY_VERSION: "1.1.14"
 
 on:
-  workflow_run:
-    workflows:
-      - CI
-    types:
-      - completed
+  workflow_call:
   workflow_dispatch:
 
 jobs:
@@ -52,5 +48,5 @@ jobs:
           password: ${{ secrets.PYPI_API_TOKEN }}
 
 concurrency:
-  group: cicd-tests-${{ github.ref }}-1
+  group: workflow-cd-${{ github.ref }}-1
   cancel-in-progress: true

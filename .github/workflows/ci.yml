@@ -53,3 +53,11 @@ jobs:
         if: env.ENABLE_COVERAGE
         with:
           fail_ci_if_error: true
+
+      - name: Call CD workflow
+        uses: ./.github/workflows/cd.yml
+        secrets: inherit
+
+concurrency:
+  group: workflow-ci-${{ github.ref }}-1
+  cancel-in-progress: true
