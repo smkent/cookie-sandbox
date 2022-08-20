@@ -26,3 +26,6 @@ runs:
       run: |
         pip install poetry-dynamic-versioning
         poetry install
+
+    - name: 🧰 Add mypy annotator
+      uses: pr-annotators/mypy-pr-annotator@v1.0.0
