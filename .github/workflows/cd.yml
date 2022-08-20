@@ -9,7 +9,11 @@ env:
   RELEASE_POETRY_VERSION: "1.1.14"
 
 on:
-  workflow_call:
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
