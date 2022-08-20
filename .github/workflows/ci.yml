@@ -34,6 +34,9 @@ jobs:
           python_version: ${{ matrix.python-version }}
           poetry_version: ${{ matrix.poetry-version }}
 
+      - name: 🧰 Add mypy annotator
+        uses: pr-annotators/mypy-pr-annotator@v1.0.0
+
       - name: 🔥 Test
         run: poetry run poe test
 
