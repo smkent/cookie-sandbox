@@ -52,5 +52,5 @@ jobs:
           fail_ci_if_error: true
 
 concurrency:
-  group: workflow-ci-${{ github.ref }}-${{ matrix.python-version }}-${{ matrix.poetry-version }}-1
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
