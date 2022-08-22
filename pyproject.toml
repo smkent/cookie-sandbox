@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "cookie-sandbox"
-version = "0.0.0"
+version = "0.0.3-post.6+8bae8fb"
 description = ""
 license = "GPL-3.0-or-later"
 authors = ["Stephen Kent <smkent@smkent.net>"]
@@ -35,7 +35,7 @@ tox = "*"
 [tool.poetry.scripts]
 
 [tool.poetry-dynamic-versioning]
-enable = true
+enable = false
 vcs = "git"
 style = "semver"
 
