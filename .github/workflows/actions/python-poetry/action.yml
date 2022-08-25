@@ -15,7 +15,6 @@ runs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ inputs.python_version }}
-        cache: poetry
 
     - name: ✨ Install Poetry
       uses: abatilo/actions-poetry@v2.0.0
