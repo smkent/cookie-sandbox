@@ -17,6 +17,7 @@ on:
 jobs:
   VarTest:
     name: Test variable expansion
+    runs-on: ubuntu-latest
     steps:
 
       - name: Run if TEST1 is true
