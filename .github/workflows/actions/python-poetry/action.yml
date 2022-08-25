@@ -11,10 +11,16 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: 🛠️ Install poetry for bootstrapping
+      shell: bash
+      run: |
+        pip install poetry==${{ inputs.poetry_version }}
+
     - name: 🐍 Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: ${{ inputs.python_version }}
+        cache: poetry
 
     - name: ✨ Install Poetry
       uses: abatilo/actions-poetry@v2.0.0
