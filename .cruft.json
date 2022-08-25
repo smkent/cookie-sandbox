@@ -1,0 +1,20 @@
+{
+  "template": "https://github.com/smkent/cookie-python",
+  "commit": "d994577dbdc01541ee71328a66835bd5d9c6b3c1",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "cookie-sandbox",
+      "project_slug": "cookie_sandbox",
+      "project_description": "",
+      "project_license": "GPL-3.0-or-later",
+      "enable_coverage": "yes",
+      "enable_pypi_publish": "no",
+      "author_name": "Stephen Kent",
+      "author_email": "smkent@smkent.net",
+      "github_user": "smkent",
+      "_template": "https://github.com/smkent/cookie-python"
+    }
+  },
+  "directory": null
+}
