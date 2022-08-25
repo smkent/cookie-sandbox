@@ -3,6 +3,8 @@ name: Test
 
 env:
   ENABLE_COVERAGE: true
+  TEST1: true
+  TEST2: false
 
 on:
   pull_request:
@@ -13,6 +15,51 @@ on:
   workflow_dispatch:
 
 jobs:
+  VarTest:
+    name: Test variable expansion
+    steps:
+
+      - name: Run if TEST1 is true
+        run: echo yep
+        if: ${{ env.TEST1 == 'true' }}
+
+      - name: Run if TEST2 is true
+        run: echo yep
+        if: ${{ env.TEST2 == 'true' }}
+
+      - name: Run if TEST1 and TEST2 is true
+        run: echo yep
+        if: ${{ env.TEST1 == 'true' && env.TEST2 == 'true' }}
+
+      - name: Run if TEST1 or TEST2 is true
+        run: echo yep
+        if: ${{ env.TEST1 == 'true' || env.TEST2 == 'true' }}
+
+      - name: Run if TEST1 and TEST2 is true, multiline
+        run: echo yep
+        if: |
+          ${{ env.TEST1 == 'true'
+          && env.TEST2 == 'true' }}
+
+      - name: Run if TEST1 or TEST2 is true, multiline
+        run: echo yep
+        if: |
+          ${{ env.TEST1 == 'true'
+          || env.TEST2 == 'true' }}
+
+      - name: Run if TEST1 and TEST2 is true, multiline, no guards
+        run: echo yep
+        if: |
+          env.TEST1 == 'true'
+          && env.TEST2 == 'true'
+
+      - name: Run if TEST1 or TEST2 is true, multiline, no guards
+        run: echo yep
+        if: |
+          env.TEST1 == 'true'
+          || env.TEST2 == 'true'
+
+
   Test:
     name: Test with Python ${{ matrix.python-version }}, Poetry ${{ matrix.poetry-version }}
     runs-on: ubuntu-latest
