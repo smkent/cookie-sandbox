@@ -40,9 +40,6 @@ jobs:
           paths: tests/pytest.xml
 
       - name: 📦 Build package
-        if: |
-          env.ENABLE_PYPI_PUBLISH == 'true'
-          || env.ENABLE_TEST_PYPI_PUBLISH == 'true'
         run: poetry build
 
       - name: 🔼 Publish to Test PyPI
