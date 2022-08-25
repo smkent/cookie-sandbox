@@ -33,6 +33,11 @@ jobs:
           python_version: ${{ matrix.python-version }}
           poetry_version: ${{ matrix.poetry-version }}
 
+      - name: Debug prints
+        run: |
+          which poetry
+          which poetry-dynamic-versioning
+
       - name: 🔥 Test
         run: poetry run poe test
 
