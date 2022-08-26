@@ -32,6 +32,7 @@ pytest-cov = "*"
 pytest-github-actions-annotate-failures = "*"
 pytest-sugar = "*"
 tox = "*"
+Flake8-pyproject = "^1.1.0"
 
 [tool.poetry.scripts]
 
@@ -63,6 +64,9 @@ show_missing = true
 
 [tool.cruft]
 skip = [".git"]
+
+[tool.flake8]
+exclude = "./.*"
 
 [tool.isort]
 atomic = true
