@@ -35,7 +35,7 @@ jobs:
         uses: ./.github/workflows/actions/python-poetry
         with:
           python_version: ${{ matrix.python-version }}
-          poetry_version: ==${{ matrix.poetry-version }}.*
+          poetry_version: ${{ matrix.poetry-version }}
 
       - name: 🔥 Test
         run: poetry run poe test
