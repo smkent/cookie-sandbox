@@ -5,7 +5,7 @@ env:
   ENABLE_PYPI_PUBLISH: false
   ENABLE_TEST_PYPI_PUBLISH: false
   RELEASE_PYTHON_VERSION: "3.10"
-  RELEASE_POETRY_VERSION: "1.1.14"
+  RELEASE_POETRY_VERSION: "1.1"
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
         uses: ./.github/workflows/actions/python-poetry
         with:
           python_version: ${{ env.RELEASE_PYTHON_VERSION }}
-          poetry_version: ${{ env.RELEASE_POETRY_VERSION }}
+          poetry_version: ==${{ env.RELEASE_POETRY_VERSION }}.*
 
       - name: 🔥 Test
         run: poetry run poe test

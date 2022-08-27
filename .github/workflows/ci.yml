@@ -24,7 +24,7 @@ jobs:
           - "3.9"
           - "3.10"
         poetry-version:
-          - "1.1.14"
+          - "1.1"
 
     runs-on: ${{ matrix.os }}-latest
     steps:
@@ -35,7 +35,7 @@ jobs:
         uses: ./.github/workflows/actions/python-poetry
         with:
           python_version: ${{ matrix.python-version }}
-          poetry_version: ${{ matrix.poetry-version }}
+          poetry_version: ==${{ matrix.poetry-version }}.*
 
       - name: 🔥 Test
         run: poetry run poe test
