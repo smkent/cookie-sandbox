@@ -31,7 +31,7 @@ runs:
         poetry install
 
     - name: 🪝 Cache pre-commit hooks
-      uses: actions/cache@v1
+      uses: actions/cache@v3
       with:
         path: ~/.cache/pre-commit
         key: pre-commit-${{ runner.os }}-python-${{ steps.setuppy.outputs.python-version }}-${{ hashFiles('.pre-commit-config.yaml') }}
