@@ -105,7 +105,7 @@ sequence = ["isort_lint", "black_lint"]
 help = "Run linters"
 
 [tool.poe.tasks.test]
-sequence = ["flake8", "isort", "black", "mypy", "bandit", "pytest"]
+sequence = ["pca", "pytest"]
 help = "Run all tests"
 
 [tool.bandit]
