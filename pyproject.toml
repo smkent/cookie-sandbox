@@ -53,6 +53,8 @@ PROJECT_CODE_DIRS="cookie_sandbox/ tests/"
 flake8 = { cmd = "flake8", help = "Check code style with flake8" }
 mypy = { cmd = "mypy", help = "Check types with mypy" }
 pytest = { cmd = "pytest", help = "Run unit tests with pytest" }
+pc = { cmd = "pre-commit", help = "Invoke pre-commit" }
+pca = { cmd = "pre-commit run --all-files", help = "Check all files" }
 
 [tool.poe.tasks.cookie]
 shell = """
@@ -108,6 +110,9 @@ help = "Run all tests"
 
 [tool.bandit]
 skips = ["B101"]  # assert_used
+
+[tool.black]
+line-length = 79
 
 [tool.coverage.run]
 source = ["cookie_sandbox"]
