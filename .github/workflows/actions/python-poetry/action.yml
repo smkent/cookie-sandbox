@@ -21,6 +21,7 @@ runs:
     - name: 🐍 Set up Python
       uses: actions/setup-python@v4
       with:
+        id: setup_py
         python-version: ${{ inputs.python_version }}
         cache: poetry
 
@@ -28,3 +29,9 @@ runs:
       shell: bash
       run: |
         poetry install
+
+    - name: 🪝 Cache pre-commit hooks
+      uses: actions/cache@v1
+      with:
+        path: ~/.cache/pre-commit
+        key: pre-commit-${{ runner.os }}-python-${{ steps.setup_py.outputs.python-version }}-${{ hashFiles('.pre-commit-config.yaml') }}
