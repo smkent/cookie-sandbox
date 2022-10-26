@@ -105,7 +105,7 @@ sequence = ["isort_lint", "black_lint"]
 help = "Run linters"
 
 [tool.poe.tasks.test]
-sequence = ["pca", "pytest"]
+sequence = ["pca --show-diff-on-failure", "pytest"]
 help = "Run all tests"
 
 [tool.bandit]
