@@ -3,7 +3,6 @@ name: Build
 
 env:
   REGISTRY: ghcr.io
-  ENABLE_CONTAINER_PUBLISH: true
   IMAGE_NAME: ${{ github.repository }}
   RELEASE_PYTHON_VERSION: "3.10"
   RELEASE_POETRY_VERSION: "1.1"
@@ -19,7 +18,6 @@ on:
 
 jobs:
   Container:
-    if: ${{ env.ENABLE_CONTAINER_PUBLISH == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -52,8 +50,8 @@ jobs:
       - name: 🐍 Set up Python project with Poetry
         uses: ./.github/workflows/actions/python-poetry
         with:
-          python_version: ${{ matrix.python-version }}
-          poetry_version: ${{ matrix.poetry-version }}
+          python_version: ${{ env.RELEASE_PYTHON_VERSION }}
+          poetry_version: ${{ env.RELEASE_POETRY_VERSION }}
 
       - name: 🔥 Test
         run: poetry run poe test
