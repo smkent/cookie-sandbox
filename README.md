@@ -1,4 +1,4 @@
-# cookie-sandbox: 
+# cookie-sandbox:
 
 [![Build](https://img.shields.io/github/checks-status/smkent/cookie-sandbox/main?label=build)][gh-actions]
 [![codecov](https://codecov.io/gh/smkent/cookie-sandbox/branch/main/graph/badge.svg)][codecov]
