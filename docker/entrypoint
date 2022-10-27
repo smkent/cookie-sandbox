@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -ex
+
+while : ; do
+    date
+    sleep 3
+done
