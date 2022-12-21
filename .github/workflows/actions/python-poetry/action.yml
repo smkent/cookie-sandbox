@@ -7,10 +7,17 @@ inputs:
   poetry_version:
     description: "Poetry version to install"
     required: true
+  coverage:
+    description: "Upload coverage report"
+    required: false
+    default: false
 
 runs:
   using: composite
   steps:
+    - name: 💾 Check out repository
+      uses: actions/checkout@v3
+
     - name: ✨ Install Poetry
       shell: bash
       run: |
@@ -45,3 +52,22 @@ runs:
         key: "pre-commit-${{ runner.os }}-python\
           -${{ steps.setuppy.outputs.python-version }}\
           -${{ hashFiles('.pre-commit-config.yaml') }}"
+
+    - name: 🔥 Test
+      run: poetry run poe test
+
+    - name: 🚒 Create test summary
+      uses: test-summary/action@v1
+      if: success() || failure()
+      with:
+        paths: ./.pytest_results.xml
+
+    - name: 📊 Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      if: inputs.coverage
+      with:
+        fail_ci_if_error: true
+        files: ./.pytest_coverage.xml
+
+    - name: 📦 Build package
+      run: poetry build

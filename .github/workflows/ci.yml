@@ -29,33 +29,12 @@ jobs:
 
     runs-on: ${{ matrix.os }}-latest
     steps:
-      - name: 💾 Check out repository
-        uses: actions/checkout@v3
-
-      - name: 🐍 Set up Python project with Poetry
+      - name: 🐍 Build and test Python project with Poetry
         uses: ./.github/workflows/actions/python-poetry
         with:
           python_version: ${{ matrix.python-version }}
           poetry_version: ${{ matrix.poetry-version }}
-
-      - name: 🔥 Test
-        run: poetry run poe test
-
-      - name: 🚒 Create test summary
-        uses: test-summary/action@v1
-        if: success() || failure()
-        with:
-          paths: ./.pytest_results.xml
-
-      - name: 📦 Build package
-        run: poetry build
-
-      - name: 📊 Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        if: ${{ env.ENABLE_COVERAGE == 'true' }}
-        with:
-          fail_ci_if_error: true
-          files: ./.pytest_coverage.xml
+          coverage: ${{ env.ENABLE_COVERAGE == 'true' }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

@@ -21,26 +21,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 💾 Check out repository
-        uses: actions/checkout@v3
-
-      - name: 🐍 Set up Python project with Poetry
+      - name: 🐍 Build and test Python project with Poetry
         uses: ./.github/workflows/actions/python-poetry
         with:
           python_version: ${{ env.RELEASE_PYTHON_VERSION }}
           poetry_version: ${{ env.RELEASE_POETRY_VERSION }}
-
-      - name: 🔥 Test
-        run: poetry run poe test
-
-      - name: 🚒 Create test summary
-        uses: test-summary/action@v1
-        if: success() || failure()
-        with:
-          paths: ./.pytest_results.xml
-
-      - name: 📦 Build package
-        run: poetry build
 
       - name: 🔼 Publish to Test PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
