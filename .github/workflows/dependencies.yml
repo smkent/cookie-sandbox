@@ -22,16 +22,11 @@ jobs:
       - name: 🔬 Check if any dependencies were updated
         run: |
           echo "updated_files=$(git status --porcelain | wc -l)" >> $GITHUB_ENV
-          echo "commit_message=$(
-            echo "Update project dependencies";
-            echo;
-            cat ${{ runner.temp }}/poetry_updates.txt;
-          )" >> $GITHUB_ENV
 
       - name: ⚙️ Create pull request
         uses: peter-evans/create-pull-request@v4.2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: ${{ env.commit_message }}
+          commit-message: "Update project dependencies"
           branch: dependency-updates
         if: ${{ env.updated_files > 0 }}
