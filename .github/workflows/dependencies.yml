@@ -33,6 +33,5 @@ jobs:
           body: |
             Automatic project dependency updates via
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          labels:
-            - automerge
+          labels: "automerge"
         if: ${{ env.updated_files > 0 }}
