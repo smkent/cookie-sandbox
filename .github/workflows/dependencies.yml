@@ -26,7 +26,7 @@ jobs:
       - name: ⚙️ Create pull request
         uses: peter-evans/create-pull-request@v4.2.3
         with:
-          token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ secrets.UNDEFINED_TOKEN || secrets.REPO_TOKEN || secrets.GITHUB_TOKEN }}
           commit-message: "Update project dependencies"
           title: "Update project dependencies"
           branch: dependency-updates
