@@ -55,7 +55,7 @@ runs:
         # https://github.com/actions/runner-images/issues/6185
         PYTHON_KEYRING_BACKEND: "keyring.backends.null.Keyring"
       run: |
-        poetry update --no-cache
+        poetry update --no-cache | tee ${{ runner.temp }}/poetry_updates.txt
         poetry run pre-commit autoupdate
       if: inputs.update == 'true'
 

@@ -21,12 +21,14 @@ jobs:
 
       - name: 🔬 Check if any dependencies were updated
         run: |
-          echo "update_count=$(git status --porcelain | wc -l)"
-          echo "update_count=$(git status --porcelain | wc -l)" >> $GITHUB_ENV
+          echo "updated_files=$(git status --porcelain | wc -l)" >> $GITHUB_ENV
 
       - name: ⚙️ Create pull request
         run: |
-          echo update_count=${update_count}
-        if: ${{ env.update_count > 0 }}
+          echo updated_files=${updated_files}
+          gh pr create -B main -H dependency-updates \
+            --title 'Update project dependencies' \
+            --body "$(cat ${{ runner.temp }}/poetry_updates.txt)"
+        if: ${{ env.updated_files > 0 }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
