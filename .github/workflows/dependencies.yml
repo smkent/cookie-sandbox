@@ -6,7 +6,7 @@ on:
 
 jobs:
   Update:
-    name: Update package dependencies
+    name: Update project dependencies
 
     runs-on: ubuntu-latest
 
