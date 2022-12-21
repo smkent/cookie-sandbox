@@ -26,6 +26,13 @@ jobs:
       - name: ⚙️ Create pull request
         run: |
           echo updated_files=${updated_files}
+          git checkout -b dependency-updates
+          git add -u .
+          (
+            echo "Update project dependencies"
+            echo
+            cat ${{ runner.temp }}/poetry_updates.txt
+          ) | git commit -F-
           gh pr create -B main -H dependency-updates \
             --title 'Update project dependencies' \
             --body "$(cat ${{ runner.temp }}/poetry_updates.txt)"
