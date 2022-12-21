@@ -13,6 +13,15 @@ inputs:
     description: "Upload coverage report"
     required: false
     default: false
+  update:
+    description: "Update project dependencies"
+    required: false
+    default: false
+
+env:
+  # https://github.com/python-poetry/poetry/issues/1917
+  # https://github.com/actions/runner-images/issues/6185
+  PYTHON_KEYRING_BACKEND: "keyring.backends.null.Keyring"
 
 runs:
   using: composite
@@ -34,15 +43,17 @@ runs:
 
     - name: 🛠️ Install project dependencies
       shell: bash
-      env:
-        # https://github.com/python-poetry/poetry/issues/1917
-        # https://github.com/actions/runner-images/issues/6185
-        PYTHON_KEYRING_BACKEND: "keyring.backends.null.Keyring"
       run: |
         poetry install
         poetry lock --check
         [ "$(poetry version -s)" != "0.0.0" ] \
             || { echo "Versioning broken"; exit 1; }
+
+    - name: 🆙 Update project dependencies
+      shell: bash
+      run: |
+        poetry update --no-cache
+        poetry run pre-commit autoupdate
 
     - name: 🪝 Cache pre-commit hooks
       uses: actions/cache@v3

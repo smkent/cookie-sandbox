@@ -16,3 +16,5 @@ jobs:
 
       - name: 🐍 Build and test Python project with Poetry
         uses: ./.github/workflows/actions/python-poetry
+        with:
+          update: true
