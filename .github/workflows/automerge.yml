@@ -2,11 +2,14 @@
 name: PR auto-merge
 
 on:
-  status
+  workflow_run:
+    workflows: [Test]
+    types: [completed]
 
 jobs:
   show-env:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
     - run: cat $GITHUB_EVENT_PATH
     - run: echo event_name=${{ github.event_name }}
