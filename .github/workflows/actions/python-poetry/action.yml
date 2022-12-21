@@ -57,7 +57,7 @@ runs:
       run: |
         poetry update --no-cache
         poetry run pre-commit autoupdate
-      if: ${{ inputs.update == true }}
+      if: inputs.update == "true"
 
     - name: 🪝 Cache pre-commit hooks
       uses: actions/cache@v3
@@ -79,7 +79,7 @@ runs:
 
     - name: 📊 Upload coverage to Codecov
       uses: codecov/codecov-action@v3
-      if: ${{ inputs.coverage == true }}
+      if: inputs.coverage == "true"
       with:
         fail_ci_if_error: true
         files: ./.pytest_coverage.xml
