@@ -6,7 +6,7 @@ on:
 
 jobs:
   Update:
-    name: Update project dependencies
+    name: Check for updates
 
     runs-on: ubuntu-latest
 
