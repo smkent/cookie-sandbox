@@ -29,6 +29,9 @@ jobs:
 
     runs-on: ${{ matrix.os }}-latest
     steps:
+      - name: 💾 Check out repository
+        uses: actions/checkout@v3
+
       - name: 🐍 Build and test Python project with Poetry
         uses: ./.github/workflows/actions/python-poetry
         with:
