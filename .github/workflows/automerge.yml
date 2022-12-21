@@ -2,7 +2,7 @@
 name: PR auto-merge
 
 on:
-  status:
+  status
 
 jobs:
   show-env:
