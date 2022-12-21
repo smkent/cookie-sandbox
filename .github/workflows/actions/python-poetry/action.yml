@@ -51,6 +51,7 @@ runs:
           -${{ hashFiles('.pre-commit-config.yaml') }}"
 
     - name: 🔥 Test
+      shell: bash
       run: poetry run poe test
 
     - name: 🚒 Create test summary
@@ -67,4 +68,5 @@ runs:
         files: ./.pytest_coverage.xml
 
     - name: 📦 Build package
+      shell: bash
       run: poetry build
