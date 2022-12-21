@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: cat $GITHUB_EVENT_PATH
-    - run: echo ${{ github.event_name }}
-    - run: echo ${{ github.event.action }}
+    - run: echo event_name=${{ github.event_name }}
+    - run: echo state=${{ github.event.state }}
     - run: env
     - name: Dump GitHub context
       env:
