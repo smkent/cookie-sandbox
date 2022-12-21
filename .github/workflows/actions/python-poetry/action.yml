@@ -57,7 +57,7 @@ runs:
       run: poetry run poe test
 
     - name: 🚒 Create test summary
-      uses: test-summary/action@v1
+      uses: test-summary/action@v2
       if: success() || failure()
       with:
         paths: ./.pytest_results.xml
