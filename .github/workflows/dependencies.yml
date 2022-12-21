@@ -21,6 +21,7 @@ jobs:
 
       - name: 🔬 Check if any dependencies were updated
         run: |
+          echo "update_count=$(git status --porcelain | wc -l)"
           echo "update_count=$(git status --porcelain | wc -l)" >> $GITHUB_ENV
 
       - name: ⚙️ Create pull request
