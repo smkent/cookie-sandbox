@@ -2,17 +2,20 @@
 name: PR auto-merge
 
 on:
-  status
+  workflow_run:
+    workflows: [Test]
+    types: [completed]
 
 jobs:
-  show-env:
+  automerge:
     runs-on: ubuntu-latest
     steps:
-    - run: cat $GITHUB_EVENT_PATH
-    - run: echo event_name=${{ github.event_name }}
-    - run: echo state=${{ github.event.state }}
-    - run: env
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+      - id: automerge
+        name: automerge
+        uses: "pascalgn/automerge-action@eb68b061739cb9d81564f8e812d0b3c45f0fb09a"  # v0.15.5
+        env:
+          GITHUB_TOKEN: "${{ secrets.UNDEFINED_TOKEN || secrets.REPO_TOKEN || secrets.GITHUB_TOKEN }}"
+          MERGE_ERROR_FAIL: true
+          MErGE_DELETE_BRANCH: true
+          MERGE_LABELS: "automerge"
+          MERGE_METHOD: "merge"
