@@ -28,5 +28,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update project dependencies"
+          title: "Update project dependencies"
           branch: dependency-updates
+          body: |
+            Automatic project dependency updates via
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          labels:
+            - automerge
         if: ${{ env.updated_files > 0 }}
