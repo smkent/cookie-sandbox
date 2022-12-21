@@ -1,0 +1,18 @@
+---
+name: Chores
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Dependencies:
+    name: Update package dependencies
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 💾 Check out repository
+        uses: actions/checkout@v3
+
+      - name: 🐍 Build and test Python project with Poetry
+        uses: ./.github/workflows/actions/python-poetry
