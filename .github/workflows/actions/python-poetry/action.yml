@@ -3,10 +3,12 @@ name: Set up Python project with Poetry
 inputs:
   python_version:
     description: "Python version to install"
-    required: true
+    required: false
+    default: "3.11"
   poetry_version:
     description: "Poetry version to install"
-    required: true
+    required: false
+    default: "1.2"
   coverage:
     description: "Upload coverage report"
     required: false
