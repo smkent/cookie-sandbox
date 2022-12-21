@@ -57,6 +57,7 @@ runs:
       run: |
         poetry update --no-cache
         poetry run pre-commit autoupdate
+      if: inputs.update
 
     - name: 🪝 Cache pre-commit hooks
       uses: actions/cache@v3
