@@ -1,11 +1,11 @@
 ---
-name: Chores
+name: Update Dependencies
 
 on:
   workflow_dispatch:
 
 jobs:
-  Dependencies:
+  Update:
     name: Update package dependencies
 
     runs-on: ubuntu-latest
