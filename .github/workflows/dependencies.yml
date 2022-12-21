@@ -18,3 +18,14 @@ jobs:
         uses: ./.github/workflows/actions/python-poetry
         with:
           update: true
+
+      - name: 🔬 Check if any dependencies were updated
+        run: |
+          echo "update_count=$(git status --porcelain | wc -l)" >> $GITHUB_ENV
+
+      - name: ⚙️ Create pull request
+        run: |
+          echo update_count=${update_count}
+        if: ${{ env.update_count > 0 }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
