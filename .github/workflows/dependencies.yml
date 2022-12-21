@@ -30,6 +30,7 @@ jobs:
           commit-message: "Update project dependencies"
           title: "Update project dependencies"
           branch: dependency-updates
+          delete-branch: true
           body: |
             Automatic project dependency updates via
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
