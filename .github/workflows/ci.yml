@@ -34,6 +34,11 @@ jobs:
       - name: 📜 Fetch full repository history for unit tests
         run: git fetch --unshallow
 
+      - name: Try git log deltas
+        run: |
+          git log --oneline --graph 5c7c9f4dac712b6d56d4006c5b981a4887cfc38c...@
+          git log --oneline --graph 5c7c9f4dac712b6d56d4006c5b981a4887cfc38c...${{ github.sha }}
+
       - name: 🐍 Build and test Python project with Poetry
         uses: ./.github/workflows/actions/python-poetry
         with:
