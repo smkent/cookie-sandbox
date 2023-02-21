@@ -22,6 +22,9 @@ jobs:
       - name: 💾 Check out repository
         uses: actions/checkout@v3
 
+      - name: 📜 Fetch full repository history for unit tests
+        run: git fetch --unshallow
+
       - name: 🐍 Build and test Python project with Poetry
         uses: ./.github/workflows/actions/python-poetry
 
