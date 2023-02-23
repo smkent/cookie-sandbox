@@ -4,6 +4,31 @@
 [![codecov](https://codecov.io/gh/smkent/cookie-sandbox/branch/main/graph/badge.svg)][codecov]
 [![GitHub stars](https://img.shields.io/github/stars/smkent/cookie-sandbox?style=social)][repo]
 
+## Installation and usage with Docker
+
+Example `docker-compose.yaml`:
+
+```yaml
+version: "3.7"
+
+services:
+  cookie-sandbox:
+    image: ghcr.io/smkent/cookie-sandbox:latest
+    restart: unless-stopped
+```
+
+Start the container by running:
+
+```console
+docker-compose up -d
+```
+
+Debugging information can be viewed in the container log:
+
+```console
+docker-compose logs -f
+```
+
 ## Development
 
 ### [Poetry][poetry] installation
