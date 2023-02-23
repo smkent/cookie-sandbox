@@ -54,7 +54,7 @@ jobs:
           poetry_version: ${{ env.RELEASE_POETRY_VERSION }}
 
       - name: Print project version
-        run: echo $PROJECT_VERSION
+        run: echo ${{ env.PROJECT_VERSION }}
 
       - name: 🔥 Test
         run: poetry run poe test
