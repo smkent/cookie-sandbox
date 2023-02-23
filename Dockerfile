@@ -1,5 +1,5 @@
 FROM python:3-alpine
-ENV POETRY_DYNAMIC_VERSIONING_BYPASS "0.0.0"
+ARG POETRY_DYNAMIC_VERSIONING_BYPASS "0.0.0"
 RUN apk add --no-cache tini
 COPY docker/entrypoint /
 
