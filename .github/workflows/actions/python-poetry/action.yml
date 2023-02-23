@@ -36,7 +36,7 @@ runs:
         python-version: ${{ inputs.python_version }}
         cache: poetry
 
-    - name: 🛠️ Install project dependencies
+    - name: 🛠️ Install project and dependencies
       shell: bash
       env:
         # https://github.com/python-poetry/poetry/issues/1917
@@ -45,8 +45,10 @@ runs:
       run: |
         poetry install
         poetry lock --check
-        [ "$(poetry version -s)" != "0.0.0" ] \
+        PROJECT_VERSION=$(poetry version -s)
+        [ "${PROJECT_VERSION}" != "0.0.0" ] \
             || { echo "Versioning broken"; exit 1; }
+        echo "PROJECT_VERSION=${PROJECT_VERSION}" >> $GITHUB_ENV
 
     - name: 🆙 Update project dependencies
       shell: bash
